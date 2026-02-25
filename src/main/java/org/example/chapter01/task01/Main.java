@@ -16,10 +16,9 @@ public class Main {
         System.out.println("octal " + Integer.toOctalString(num));
         System.out.println("hex " + Integer.toHexString(num));
 
-        int invN = ~num;
-        float floatInvN = Float.intBitsToFloat(invN);
+        double invN = (1.0 / num);
 
-        System.out.println("inv hex float " + Float.toHexString(floatInvN));
+        System.out.println("inv hex float " + Double.toHexString(invN));
         in.close();
     }
 }
