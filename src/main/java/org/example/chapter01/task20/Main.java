@@ -9,22 +9,33 @@ import java.util.Scanner;
 
 public class Main {
     static void main() {
-        ArrayList<ArrayList<Integer>> triangle = new ArrayList<>();
         Scanner in = new Scanner(System.in);
         System.out.print("enter number: ");
         int n = in.nextInt();
-        for (int i = 0; i < n; i++){
+
+        ArrayList<ArrayList<Integer>> triangle = pascalTriangle(n);
+
+        System.out.println(triangle);
+    }
+
+    static ArrayList<ArrayList<Integer>> pascalTriangle(int n) {
+        ArrayList<ArrayList<Integer>> triangle = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
             ArrayList<Integer> row = new ArrayList<>();
-            for (int j = 0; j <= i; j++){
-                if (j == 0 || j == i){
+
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
                     row.add(1);
                 } else {
                     int val = triangle.get(i - 1).get(j - 1) + triangle.get(i - 1).get(j);
                     row.add(val);
                 }
             }
+
             triangle.add(row);
         }
-        System.out.println(triangle);
+
+        return triangle;
     }
 }

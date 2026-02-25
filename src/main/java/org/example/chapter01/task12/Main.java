@@ -11,8 +11,10 @@ import java.util.Scanner;
 public class Main {
     static void main() {
         Scanner in = new Scanner(System.in);
+
         System.out.print("enter direction (N, S, E, W): ");
         String direction = in.nextLine();
+
         int[] offset = switch (direction) {
             case "N" -> new int[]{0, 1};
             case "S" -> new int[]{0, -1};
@@ -20,6 +22,7 @@ public class Main {
             case "W" -> new int[]{-1, 0};
             default -> new int[]{0, 0};
         };
+
         System.out.println(Arrays.toString(offset));
     }
 }

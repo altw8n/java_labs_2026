@@ -3,9 +3,13 @@
 
 package org.example.chapter01.task15;
 
+import java.util.Scanner;
+
 public class Main {
     static void main() {
-        int month = 4;
+        Scanner in = new Scanner(System.in);
+        System.out.println("enter number: ");
+        int month = in.nextInt();
         switch (month){
             case 12:
             case 1:
@@ -25,8 +29,10 @@ public class Main {
             case 9:
             case 10:
             case 11:
-                System.out.println("outemn");
+                System.out.println("autumn");
                 break;
+            default:
+                System.out.println("not a month");
         }
     }
 }
