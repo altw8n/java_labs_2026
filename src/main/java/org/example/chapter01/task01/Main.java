@@ -4,10 +4,11 @@
 
 package org.example.chapter01.task01;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         Scanner in = new Scanner(System.in);
         System.out.println("enter number: ");
         int num = in.nextInt();
@@ -20,5 +21,7 @@ public class Main {
 
         System.out.println("inv hex float " + Double.toHexString(invN));
         in.close();
+        ArrayList<Integer> integers = new ArrayList<>();
+        integers.size();
     }
 }
