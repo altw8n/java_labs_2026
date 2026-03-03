@@ -1,9 +1,9 @@
-package org.example.chapter02;
+package org.example.chapter02.task01;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class Cal {
+public class Main {
     public static void main(String[] args) {
         LocalDate date = LocalDate.now().withDayOfMonth(1);
         int month;
