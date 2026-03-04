@@ -11,13 +11,17 @@ import java.util.Scanner;
 public class Main {
     static void main() {
         Scanner in = new Scanner(System.in);
+
         System.out.print("enter x: ");
         int x = in.nextInt();
+
         System.out.print("enter y: ");
         int y = in.nextInt();
         in.nextLine();
+
         System.out.print("enter direction (N, S, E, W): ");
         String direction = in.nextLine();
+
         switch (direction) {
             case "N":
                 y++;
@@ -34,6 +38,7 @@ public class Main {
             default:
                 System.out.println("wrong direction");
         }
+
         System.out.println(x + " " + y);
     }
 }

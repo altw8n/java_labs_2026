@@ -5,9 +5,10 @@
 package org.example.chapter01.task04;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(){
         double max = Double.MAX_VALUE;
         System.out.println("max val: " + max);
+
         double min = Math.nextUp(0.0);
         System.out.println("min positive val: " + min);
     }

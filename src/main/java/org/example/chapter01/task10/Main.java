@@ -6,10 +6,12 @@ package org.example.chapter01.task10;
 import java.util.Random;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(){
         Random rand = new Random();
         long num = rand.nextLong();
+
         String strBase36 = Long.toString(num, 36);
+
         System.out.println("random number: " + num);
         System.out.println("random number base 36: " + strBase36);
     }
