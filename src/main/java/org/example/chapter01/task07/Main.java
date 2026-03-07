@@ -19,19 +19,22 @@ public class Main {
         short shortFirst = (short) intFirst;
         short shortSecond = (short) intSecond;
 
-        int sum = Short.toUnsignedInt(shortFirst) + Short.toUnsignedInt(shortSecond);
+        int unsignedFirst = shortFirst & 0xFFFF;
+        int unsignedSecond = shortSecond & 0xFFFF;
+
+        short sum = (short) (unsignedFirst + unsignedSecond);
         System.out.println("сумма: " + sum);
 
-        int diff = Short.toUnsignedInt(shortFirst) - Short.toUnsignedInt(shortSecond);
+        short diff = (short) (unsignedFirst - unsignedSecond);
         System.out.println("разность: " + diff);
 
-        int prod = Short.toUnsignedInt(shortFirst) * Short.toUnsignedInt(shortSecond);
+        short prod = (short) (unsignedFirst * unsignedSecond);
         System.out.println("произведение: " + prod);
 
-        int div = Short.toUnsignedInt(shortFirst) / Short.toUnsignedInt(shortSecond);
+        short div = (short) (unsignedFirst / unsignedSecond);
         System.out.println("частное: " + div);
 
-        int mod = Short.toUnsignedInt(shortFirst) % Short.toUnsignedInt(shortSecond);
+        short mod = (short) (unsignedFirst % unsignedSecond);
         System.out.println("остаток: " + mod);
 
         in.close();
