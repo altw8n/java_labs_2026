@@ -17,7 +17,13 @@ public class Main {
         System.out.print("enter third number: ");
         int third = in.nextInt();
 
-        int max1 = (first > second) ? ((first > third) ? first : third) : ((second > third) ? second : third);
+        /*int max1 = (first > second)
+                ? ((first > third) ? first : third)
+                : ((second > third) ? second : third);
+*/
+        int max1 = first > second
+                ? first > third ? first : third
+                : second > third ? second : third;
         System.out.println("max: " + max1);
 
         int max2 = Math.max(Math.max(first, second), third);

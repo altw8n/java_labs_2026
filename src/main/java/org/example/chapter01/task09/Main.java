@@ -19,6 +19,8 @@ public class Main {
         String s1 = in.nextLine();
         String s2 = in.nextLine();
         String str2 = s1 + s2;
+        str1 = "hel" + "lo";
+        str2 = "hello";
         System.out.println(str1.equals(str2));
         System.out.println(str1 == str2);
         System.out.println(str1 != str2);

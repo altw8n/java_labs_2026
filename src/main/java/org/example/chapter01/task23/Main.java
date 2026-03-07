@@ -3,7 +3,7 @@ package org.example.chapter01.task23;
 public class Main {
     static void main() {
         int i = 0;
-        for (;;){
+        for (;;) {
             if (i >= 5){
                 break;
             }
@@ -12,9 +12,10 @@ public class Main {
         }
 
         int j = 0;
-        for (;j < 3;){
+        for (;j < 3;) {
             System.out.println(j);
             j++;
         }
+
     }
 }

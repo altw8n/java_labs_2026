@@ -18,7 +18,7 @@ public class Main {
         System.out.println(triangle);
     }
 
-    static ArrayList<ArrayList<Integer>> pascalTriangle(int n) {
+    public static ArrayList<ArrayList<Integer>> pascalTriangle(int n) {
         ArrayList<ArrayList<Integer>> triangle = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
