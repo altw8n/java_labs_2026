@@ -3,7 +3,7 @@ package org.example.chapter01.task24;
 public class Main {
     static void main() {
         IntArrayList array = new IntArrayList(12);
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             array.add_to_end(i);
         }
         array.print();

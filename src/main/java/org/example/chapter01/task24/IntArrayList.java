@@ -5,97 +5,97 @@ public class IntArrayList {
     private int size;
     private static final int DEFAULT_CAPACITY = 10;
 
-    public IntArrayList(){
+    public IntArrayList() {
         elements = new Integer[DEFAULT_CAPACITY];
         size = 0;
     }
 
-    public IntArrayList(int capacity){
+    public IntArrayList(int capacity) {
         elements = new Integer[capacity];
         size = 0;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
-    public int capacity(){
+    public int capacity() {
         return elements.length;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
-    private void resize(){
+    private void resize() {
         int newCapacity;
-        if (elements.length == 0){
+        if (elements.length == 0) {
             newCapacity = DEFAULT_CAPACITY;
         } else {
             newCapacity = elements.length + (elements.length / 2);
         }
         Integer[] newArray = new Integer[newCapacity];
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             newArray[i] = elements[i];
         }
         elements = newArray;
     }
 
-    public void add_to_end(Integer el){
-        if (size == elements.length){
+    public void add_to_end(Integer el) {
+        if (size == elements.length) {
             resize();
         }
         elements[size] = el;
         size++;
     }
 
-    public void add_by_index(Integer el, int index){
-        if (index < 0 || index > size){
+    public void add_by_index(Integer el, int index) {
+        if (index < 0 || index > size) {
             System.out.println("index out of range");
             return;
         }
-        if (size == elements.length){
+        if (size == elements.length) {
             resize();
         }
-        for (int i = size; i > index; i--){
-            elements[i] = elements[i-1];
+        for (int i = size; i > index; i--) {
+            elements[i] = elements[i - 1];
         }
         elements[index] = el;
         size++;
     }
 
-    public void remove(int index){
-        if (index < 0 || index > size){
+    public void remove(int index) {
+        if (index < 0 || index > size) {
             System.out.println("index out of range");
             return;
         }
-        for (int i = index; i < size - 1; i++){
+        for (int i = index; i < size - 1; i++) {
             elements[i] = elements[i + 1];
         }
         elements[size - 1] = null;
         size--;
     }
 
-    public void replace(int index, Integer newElement){
-        if (index < 0 || index > size){
+    public void replace(int index, Integer newElement) {
+        if (index < 0 || index > size) {
             System.out.println("index out of range");
             return;
         }
         elements[index] = newElement;
     }
 
-    public Integer get(int index){
-        if (index < 0 || index > size){
+    public Integer get(int index) {
+        if (index < 0 || index > size) {
             System.out.println("index out of range");
             return null;
         }
         return elements[index];
     }
 
-    public void print(){
+    public void print() {
         System.out.println("array: ");
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             System.out.println(elements[i]);
         }
         System.out.println();
