@@ -2,7 +2,7 @@ package org.example.chapter01.task24;
 
 public class Main {
     static void main() {
-        IntArrayList array = new IntArrayList();
+        IntArrayList array = new IntArrayList(12);
         for (int i = 0; i < 10; i++){
             array.add_to_end(i);
         }
@@ -16,5 +16,7 @@ public class Main {
         array.remove(0);
         System.out.println(array.get(3));
         System.out.println(array.size());
+        System.out.println(array.capacity());
+        System.out.println(array.isEmpty());
     }
 }
