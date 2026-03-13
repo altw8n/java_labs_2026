@@ -13,7 +13,7 @@ package org.example.chapter01.task09;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         Scanner in = new Scanner(System.in);
         String str1 = in.nextLine();
         String s1 = in.nextLine();

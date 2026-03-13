@@ -4,10 +4,11 @@
 Попробуйте сначала с оператором %, затем с floorMod.*/
 
 package org.example.chapter01.task02;
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         System.out.println("enter angle: ");
 
         Scanner in = new Scanner(System.in);
@@ -20,9 +21,9 @@ public class Main {
         System.out.println("normalised angle with floor mod: " + res2);
     }
 
-    public static int normalizeAngle(int angle){
+    public static int normalizeAngle(int angle) {
         int res = angle % 360;
-        if (res < 0){
+        if (res < 0) {
             res += 360;
         }
         return res;

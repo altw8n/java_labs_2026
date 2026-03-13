@@ -5,7 +5,7 @@
 package org.example.chapter01.task05;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         double afterMax = Integer.MAX_VALUE + 1.0;
         double beforeMin = Integer.MIN_VALUE - 1.0;
 

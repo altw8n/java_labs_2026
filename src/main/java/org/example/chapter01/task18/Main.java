@@ -12,9 +12,9 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         ArrayList<Integer> numbers = new ArrayList<>(50);
-        for (int i = 1; i <= 49; i++){
+        for (int i = 1; i <= 49; i++) {
             numbers.add(i);
         }
         ArrayList<Integer> result = new ArrayList<>(6);

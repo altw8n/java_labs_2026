@@ -8,7 +8,7 @@ package org.example.chapter01.task07;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         Scanner in = new Scanner(System.in);
         System.out.println("enter first num (0;65535)");
         int intFirst = in.nextInt();

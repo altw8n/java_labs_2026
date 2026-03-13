@@ -3,10 +3,11 @@
  Повторите с Math.max.*/
 
 package org.example.chapter01.task03;
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         System.out.print("enter first number: ");
         Scanner in = new Scanner(System.in);
         int first = in.nextInt();
