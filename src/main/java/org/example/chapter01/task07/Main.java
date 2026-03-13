@@ -1,15 +1,14 @@
-/*Напишите программу, которая читает два целых числа
-между 0 и 4294967295, сохраняет их в переменных
-типа int и вычисляет и отображает их беззнаковую
-сумму, разность, произведение, частное и остаток.
-Не преобразуйте их в тип long.*/
+/*Напишите программу, вводящую два числа в пределах от 0 до 65535,
+сохраняющую их в переменных типа short и вычисляющую их
+сумму, разность, произведение, частное и остаток без знака,
+не преобразуя эти величины в тип int..*/
 
 package org.example.chapter01.task07;
 
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         Scanner in = new Scanner(System.in);
         System.out.println("enter first num (0;65535)");
         int intFirst = in.nextInt();
@@ -20,19 +19,22 @@ public class Main {
         short shortFirst = (short) intFirst;
         short shortSecond = (short) intSecond;
 
-        int sum = Short.toUnsignedInt(shortFirst) + Short.toUnsignedInt(shortSecond);
+        int unsignedFirst = shortFirst & 0xFFFF;
+        int unsignedSecond = shortSecond & 0xFFFF;
+
+        short sum = (short) (unsignedFirst + unsignedSecond);
         System.out.println("сумма: " + sum);
 
-        int diff = Short.toUnsignedInt(shortFirst) - Short.toUnsignedInt(shortSecond);
+        short diff = (short) (unsignedFirst - unsignedSecond);
         System.out.println("разность: " + diff);
 
-        int prod = Short.toUnsignedInt(shortFirst) * Short.toUnsignedInt(shortSecond);
+        short prod = (short) (unsignedFirst * unsignedSecond);
         System.out.println("произведение: " + prod);
 
-        int div = Short.toUnsignedInt(shortFirst) / Short.toUnsignedInt(shortSecond);
+        short div = (short) (unsignedFirst / unsignedSecond);
         System.out.println("частное: " + div);
 
-        int mod = Short.toUnsignedInt(shortFirst) % Short.toUnsignedInt(shortSecond);
+        short mod = (short) (unsignedFirst % unsignedSecond);
         System.out.println("остаток: " + mod);
 
         in.close();

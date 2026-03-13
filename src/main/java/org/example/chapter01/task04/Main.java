@@ -5,7 +5,7 @@
 package org.example.chapter01.task04;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         double max = Double.MAX_VALUE;
         System.out.println("max val: " + max);
 

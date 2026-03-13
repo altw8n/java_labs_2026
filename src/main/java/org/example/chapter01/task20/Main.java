@@ -15,10 +15,18 @@ public class Main {
 
         ArrayList<ArrayList<Integer>> triangle = pascalTriangle(n);
 
-        System.out.println(triangle);
+        for (int i = 0; i < triangle.size(); i++) {
+            for (int s = 0; s < triangle.size() - i; s++) {
+                System.out.print(" ");
+            }
+            for (Integer num : triangle.get(i)) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
     }
 
-    static ArrayList<ArrayList<Integer>> pascalTriangle(int n) {
+    public static ArrayList<ArrayList<Integer>> pascalTriangle(int n) {
         ArrayList<ArrayList<Integer>> triangle = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
