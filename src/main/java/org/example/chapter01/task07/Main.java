@@ -22,6 +22,7 @@ public class Main {
         int unsignedFirst = shortFirst & 0xFFFF;
         int unsignedSecond = shortSecond & 0xFFFF;
 
+
         short sum = (short) (unsignedFirst + unsignedSecond);
         System.out.println("сумма: " + sum);
 

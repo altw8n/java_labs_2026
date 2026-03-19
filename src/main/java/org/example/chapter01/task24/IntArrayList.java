@@ -96,7 +96,7 @@ public class IntArrayList {
     public void print() {
         System.out.println("array: ");
         for (int i = 0; i < size; i++) {
-            System.out.println(elements[i]);
+            System.out.print(elements[i] + " ");
         }
         System.out.println();
     }

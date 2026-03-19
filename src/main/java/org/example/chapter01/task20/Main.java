@@ -17,10 +17,10 @@ public class Main {
 
         for (int i = 0; i < triangle.size(); i++) {
             for (int s = 0; s < triangle.size() - i; s++) {
-                System.out.print(" ");
+                System.out.print("     ");
             }
             for (Integer num : triangle.get(i)) {
-                System.out.print(num + " ");
+                System.out.print(String.format("%5d", num));
             }
             System.out.println();
         }
