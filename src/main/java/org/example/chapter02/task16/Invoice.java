@@ -42,6 +42,11 @@ public class Invoice {
             this.unitPrice = unitPrice;
 
         }
+
+        public String toFormattedString() {
+            return String.format("%-30s %4d x %8.2f = %10.2f",
+                    description, quantity, unitPrice, getTotalPrice());
+        }
     }
     private ArrayList<Item> items = new ArrayList<>();
 
@@ -69,5 +74,48 @@ public class Invoice {
             }
         }
         return false;
+    }
+
+    public Item getItem(int index){
+        if (index >= 0 && index < items.size()){
+            return items.get(index);
+        }
+        return null;
+    }
+
+    public double getTotalAmount() {
+        double total = 0;
+        for (Item item : items) {
+            total += item.getTotalPrice();
+        }
+        return total;
+    }
+
+    public void printInvoice() {
+        System.out.println("\n" + "=".repeat(80));
+        System.out.println("                          СЧЕТ №" + System.currentTimeMillis() % 10000);
+        System.out.println("                          " + new java.util.Date());
+        System.out.println("=".repeat(80));
+
+        if (items.isEmpty()) {
+            System.out.println("                    СЧЕТ ПУСТ");
+            System.out.println("=".repeat(80));
+            return;
+        }
+        System.out.printf("%-30s %10s %12s %15s%n",
+                "НАИМЕНОВАНИЕ", "КОЛ-ВО", "ЦЕНА", "СУММА");
+        System.out.println("-".repeat(80));
+
+        for (Item item : items) {
+            System.out.println(item.toFormattedString());
+        }
+        System.out.println("-".repeat(80));
+
+        double subtotal = getTotalAmount();
+
+        System.out.printf("%-30s %10s %12s %15.2f%n",
+                    "ИТОГО:", "", "", subtotal);
+
+        System.out.println("=".repeat(80));
     }
 }
