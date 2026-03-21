@@ -17,7 +17,6 @@ public class Main {
             if (Short.compareUnsigned(first, (short) 65535) > 0 || Short.compareUnsigned(second, (short) 65535) > 0) {
                 throw new IllegalArgumentException("не в диапазоне (0; 65535)");
             }
-
             short diff = (short) (first - second);
             System.out.println("разность: " + diff);
 
