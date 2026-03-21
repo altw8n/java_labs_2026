@@ -4,40 +4,36 @@
 не преобразуя эти величины в тип int..*/
 
 package org.example.chapter01.task07;
-
 import java.util.Scanner;
 
 public class Main {
+
     public static void main() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("enter first num (0;65535)");
-        int intFirst = in.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        try {
+            short first = (short) scanner.nextInt();
+            short second = (short) scanner.nextInt();
 
-        System.out.println("enter second num (0;65535)");
-        int intSecond = in.nextInt();
+            if (Short.compareUnsigned(first, (short) 65535) > 0 || Short.compareUnsigned(second, (short) 65535) > 0) {
+                throw new IllegalArgumentException("не в диапазоне (0; 65535)");
+            }
 
-        short shortFirst = (short) intFirst;
-        short shortSecond = (short) intSecond;
+            short diff = (short) (first - second);
+            System.out.println("разность: " + diff);
 
-        int unsignedFirst = shortFirst & 0xFFFF;
-        int unsignedSecond = shortSecond & 0xFFFF;
+            short sum = (short) (first + second);
+            if (Short.compareUnsigned(sum, first) < 0) {
+                throw new ArithmeticException("переполнение при сложении (> 65535)");
+            }
+            System.out.println("сумма: " + (sum & 0xFFFF));
+            //System.out.println("разность: " + (diff & 0xFFFF));
 
-
-        short sum = (short) (unsignedFirst + unsignedSecond);
-        System.out.println("сумма: " + sum);
-
-        short diff = (short) (unsignedFirst - unsignedSecond);
-        System.out.println("разность: " + diff);
-
-        short prod = (short) (unsignedFirst * unsignedSecond);
-        System.out.println("произведение: " + prod);
-
-        short div = (short) (unsignedFirst / unsignedSecond);
-        System.out.println("частное: " + div);
-
-        short mod = (short) (unsignedFirst % unsignedSecond);
-        System.out.println("остаток: " + mod);
-
-        in.close();
+        } catch (ArithmeticException e) {
+            System.out.println("error computations: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("input error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
     }
 }
