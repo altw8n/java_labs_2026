@@ -5,7 +5,7 @@ package org.example.chapter02.task07;
 
 import java.util.Objects;
 
-class Point{
+public class Point{
     private double x;
     private double y;
 
