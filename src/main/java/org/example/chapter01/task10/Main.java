@@ -6,7 +6,7 @@ package org.example.chapter01.task10;
 import java.util.Random;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         Random rand = new Random();
         long num = rand.nextLong();
 

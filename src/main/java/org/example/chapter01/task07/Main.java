@@ -1,40 +1,39 @@
-/*Напишите программу, которая читает два целых числа
-между 0 и 4294967295, сохраняет их в переменных
-типа int и вычисляет и отображает их беззнаковую
-сумму, разность, произведение, частное и остаток.
-Не преобразуйте их в тип long.*/
+/*Напишите программу, вводящую два числа в пределах от 0 до 65535,
+сохраняющую их в переменных типа short и вычисляющую их
+сумму, разность, произведение, частное и остаток без знака,
+не преобразуя эти величины в тип int..*/
 
 package org.example.chapter01.task07;
-
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("enter first num (0;65535)");
-        int intFirst = in.nextInt();
 
-        System.out.println("enter second num (0;65535)");
-        int intSecond = in.nextInt();
+    public static void main() {
+        Scanner scanner = new Scanner(System.in);
+        try {
+            short first = (short) scanner.nextInt();
+            short second = (short) scanner.nextInt();
 
-        short shortFirst = (short) intFirst;
-        short shortSecond = (short) intSecond;
+            if (Short.compareUnsigned(first, (short) 65535) > 0 || Short.compareUnsigned(second, (short) 65535) > 0) {
+                throw new IllegalArgumentException("не в диапазоне (0; 65535)");
+            }
 
-        int sum = Short.toUnsignedInt(shortFirst) + Short.toUnsignedInt(shortSecond);
-        System.out.println("сумма: " + sum);
+            short diff = (short) (first - second);
+            System.out.println("разность: " + diff);
 
-        int diff = Short.toUnsignedInt(shortFirst) - Short.toUnsignedInt(shortSecond);
-        System.out.println("разность: " + diff);
+            short sum = (short) (first + second);
+            if (Short.compareUnsigned(sum, first) < 0) {
+                throw new ArithmeticException("переполнение при сложении (> 65535)");
+            }
+            System.out.println("сумма: " + (sum & 0xFFFF));
+            //System.out.println("разность: " + (diff & 0xFFFF));
 
-        int prod = Short.toUnsignedInt(shortFirst) * Short.toUnsignedInt(shortSecond);
-        System.out.println("произведение: " + prod);
-
-        int div = Short.toUnsignedInt(shortFirst) / Short.toUnsignedInt(shortSecond);
-        System.out.println("частное: " + div);
-
-        int mod = Short.toUnsignedInt(shortFirst) % Short.toUnsignedInt(shortSecond);
-        System.out.println("остаток: " + mod);
-
-        in.close();
+        } catch (ArithmeticException e) {
+            System.out.println("error computations: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("input error: " + e.getMessage());
+        } finally {
+            scanner.close();
+        }
     }
 }

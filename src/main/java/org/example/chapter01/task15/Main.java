@@ -10,7 +10,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.println("enter number: ");
         int month = in.nextInt();
-        switch (month){
+        switch (month) {
             case 12:
             case 1:
             case 2:

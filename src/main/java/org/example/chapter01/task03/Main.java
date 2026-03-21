@@ -3,10 +3,11 @@
  Повторите с Math.max.*/
 
 package org.example.chapter01.task03;
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         System.out.print("enter first number: ");
         Scanner in = new Scanner(System.in);
         int first = in.nextInt();
@@ -17,7 +18,13 @@ public class Main {
         System.out.print("enter third number: ");
         int third = in.nextInt();
 
-        int max1 = (first > second) ? ((first > third) ? first : third) : ((second > third) ? second : third);
+        /*int max1 = (first > second)
+                ? ((first > third) ? first : third)
+                : ((second > third) ? second : third);
+*/
+        int max1 = first > second
+                ? first > third ? first : third
+                : second > third ? second : third;
         System.out.println("max: " + max1);
 
         int max2 = Math.max(Math.max(first, second), third);

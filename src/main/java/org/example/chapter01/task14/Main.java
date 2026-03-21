@@ -49,7 +49,7 @@ public class Main {
         // switch выражение
 
         int day2 = in.nextInt();
-        String dayWeek  = switch (day2){
+        String dayWeek = switch (day2) {
             case (1) -> "monday";
             case (2) -> "tuesday";
             case (3) -> "wednesday";
