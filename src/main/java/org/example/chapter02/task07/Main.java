@@ -51,5 +51,3 @@ class Point{
     }
 }
 
-public class Main {
-}
