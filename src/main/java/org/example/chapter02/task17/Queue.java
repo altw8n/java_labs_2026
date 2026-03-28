@@ -11,6 +11,11 @@ public class Queue {
             this.value = value;
             this.next = null;
         }
+
+        public String getValue() {
+            return value;
+        }
+
     }
 
     private Node head;
@@ -23,8 +28,19 @@ public class Queue {
         size = 0;
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public boolean isEmpty(){
         return (size == 0);
+    }
+
+    public String peek() {
+        if (isEmpty()) {
+            return null;
+        }
+        return head.value;
     }
 
     public void add(String value) {
