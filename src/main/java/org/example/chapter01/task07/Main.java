@@ -1,38 +1,45 @@
-/*Напишите программу, вводящую два числа в пределах от 0 до 65535,
-сохраняющую их в переменных типа short и вычисляющую их
-сумму, разность, произведение, частное и остаток без знака,
-не преобразуя эти величины в тип int..*/
 
 package org.example.chapter01.task07;
+
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main() {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        try {
-            short first = (short) scanner.nextInt();
-            short second = (short) scanner.nextInt();
+        int in1 = scanner.nextInt();
+        int in2 = scanner.nextInt();
 
-            if (Short.compareUnsigned(first, (short) 65535) > 0 || Short.compareUnsigned(second, (short) 65535) > 0) {
-                throw new IllegalArgumentException("не в диапазоне (0; 65535)");
-            }
-            short diff = (short) (first - second);
-            System.out.println("разность: " + diff);
-
-            short sum = (short) (first + second);
-            if (Short.compareUnsigned(sum, first) < 0) {
-                throw new ArithmeticException("переполнение при сложении (> 65535)");
-            }
-            System.out.println("сумма: " + (sum & 0xFFFF));
-            //System.out.println("разность: " + (diff & 0xFFFF));
-
-        } catch (ArithmeticException e) {
-            System.out.println("error computations: " + e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println("input error: " + e.getMessage());
-        } finally {
-            scanner.close();
+        if (in1 < 0 || in1 > 65535 || in2 < 0 || in2 > 65535) {
+            throw new IllegalArgumentException("числа вне диапазона 0..65535");
         }
+        short a = (short) in1;
+        short b = (short) in2;
+
+        short sum = add(a, b);
+        short diff = sub(a, b);
+
+        System.out.println("sum: " + toUnsigned(sum));
+        System.out.println("diff: " + toUnsigned(diff));
+    }
+
+    public static short add(short a, short b) {
+        short max = (short) 0xFFFF;
+        if ((b & 0xFFFF) > ((max - a) & 0xFFFF)) {
+            throw new ArithmeticException("переполнение при сложении");
+        }
+        return (short) (a + b);
+    }
+
+
+    public static short sub(short a, short b) {
+        if ((a & 0xFFFF) < (b & 0xFFFF)) {
+            throw new ArithmeticException("отрицательный результат");
+        }
+        return (short) (a - b);
+    }
+
+    public static int toUnsigned(short s) {
+        return s & 0xFFFF;
     }
 }
