@@ -14,6 +14,19 @@ public class Point{
         this.y = y;
     }
 
+    public Point(double x) {
+        this(x, 0);
+    }
+
+    /*
+    public Point(double y) {
+        this(0, y);
+    }*/
+
+    public static Point pointWithY(double y) {
+        return new Point(0, y);
+    }
+
     public double getX() {
         return x;
     }
