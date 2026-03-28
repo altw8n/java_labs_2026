@@ -4,13 +4,15 @@ package org.example.chapter01.task07;
 import java.util.Scanner;
 
 public class Main {
+    private static final int UNSIGNED_MASK = 0xFFFF;
+    private static final int UNSIGNED_SHORT_MAX = 65535;
 
-    public static void main(String[] args) {
+    public static void main() {
         Scanner scanner = new Scanner(System.in);
         int in1 = scanner.nextInt();
         int in2 = scanner.nextInt();
 
-        if (in1 < 0 || in1 > 65535 || in2 < 0 || in2 > 65535) {
+        if (in1 < 0 || in1 > UNSIGNED_SHORT_MAX || in2 < 0 || in2 > UNSIGNED_SHORT_MAX) {
             throw new IllegalArgumentException("числа вне диапазона 0..65535");
         }
         short a = (short) in1;
@@ -25,7 +27,7 @@ public class Main {
 
     public static short add(short a, short b) {
         short max = (short) 0xFFFF;
-        if ((b & 0xFFFF) > ((max - a) & 0xFFFF)) {
+        if ((b & UNSIGNED_MASK) > ((max - a) & UNSIGNED_MASK)) {
             throw new ArithmeticException("переполнение при сложении");
         }
         return (short) (a + b);
@@ -33,13 +35,13 @@ public class Main {
 
 
     public static short sub(short a, short b) {
-        if ((a & 0xFFFF) < (b & 0xFFFF)) {
+        if ((a & UNSIGNED_MASK) < (b & UNSIGNED_MASK)) {
             throw new ArithmeticException("отрицательный результат");
         }
         return (short) (a - b);
     }
 
     public static int toUnsigned(short s) {
-        return s & 0xFFFF;
+        return s & UNSIGNED_MASK;
     }
 }
