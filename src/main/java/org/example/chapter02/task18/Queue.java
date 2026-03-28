@@ -30,38 +30,37 @@ public class Queue {
         size = 0;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return (size == 0);
     }
 
     public void add(String value) {
         Node node = new Node(value);
-        if (isEmpty()){
+        if (isEmpty()) {
             head = node;
-            tail = node;
         } else {
             tail.next = node;
-            tail = node;
         }
+        tail = node;
         size++;
     }
 
     public String remove() {
-        if (isEmpty()){
+        if (isEmpty()) {
             throw new NoSuchElementException("queue is empty");
         }
         String value = head.value;
         head = head.next;
         size--;
-        if (isEmpty()){
+        if (isEmpty()) {
             tail = null;
         }
         return value;
     }
 
-    public void printQueue(){
+    public void printQueue() {
         Node current = head;
-        while (current != null){
+        while (current != null) {
             System.out.print(current.value + " ");
             current = current.next;
         }
@@ -88,6 +87,7 @@ public class Queue {
             return value;
         }
     }
+
     public Iterator iterator() {
         return new Iterator();
     }

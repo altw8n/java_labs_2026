@@ -8,7 +8,7 @@ package org.example.chapter02.task06;
  * Класс {@code Point} представляет точку на плоскости с координатами x и y
  */
 
-public class Point{
+public class Point {
     private double x;
     private double y;
 
@@ -18,7 +18,7 @@ public class Point{
      * @param x координата X
      * @param y координата Y
      */
-    public Point(double x, double y){
+    public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -28,14 +28,14 @@ public class Point{
      *
      * @param newX новое значение x
      */
-    public void setX(double newX){
+    public void setX(double newX) {
         this.x = newX;
     }
 
     /**
      * геттер x
      */
-    public double getX(){
+    public double getX() {
         return this.x;
     }
 
@@ -44,14 +44,14 @@ public class Point{
      *
      * @param newY новое значение y
      */
-    public void setY(double newY){
+    public void setY(double newY) {
         this.y = newY;
     }
 
     /**
      * геттер y
      */
-    public double getY(){
+    public double getY() {
         return this.y;
     }
 
@@ -64,7 +64,7 @@ public class Point{
      * @param dx смещение по оси x
      * @param dy смещение по оси y
      */
-    public void translate(double dx, double dy){
+    public void translate(double dx, double dy) {
         this.x += dx;
         this.y += dy;
     }
@@ -77,7 +77,7 @@ public class Point{
      *
      * @param coef коэффициент масштабирования
      */
-    public void scale(double coef){
+    public void scale(double coef) {
         this.x *= coef;
         this.y *= coef;
     }
