@@ -2,37 +2,58 @@ package org.example.chapter02.task01;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.format.TextStyle;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) {
+        LocalDate date = getStartDate(args);
+        int month = date.getMonthValue();
+        printCalendar(date, month);
+    }
+
+    private static LocalDate getStartDate(String[] args) {
         LocalDate date = LocalDate.now().withDayOfMonth(1);
-        int month;
         if (args.length >= 2) {
-            month = Integer.parseInt(args[0]);
+            int month = Integer.parseInt(args[0]);
             int year = Integer.parseInt(args[1]);
             date = LocalDate.of(year, month, 1);
-        } else {
-            month = date.getMonthValue();
         }
+        return date;
+    }
 
-        System.out.println(" Sun Mon Tue Wed Thu Fri Sat");
-        DayOfWeek weekday = date.getDayOfWeek();
-        int value = weekday.getValue(); // 1 = Monday, ... 7 = Sunday
-        int indent;
-        if (value == 7) {
-            indent = 0;
-        } else {
-            indent = value;
-        }
-        for (int i = 1; i < indent; i++)
-            System.out.print("    ");
-        while (date.getMonthValue() == month) {
-            System.out.printf("%4d", date.getDayOfMonth());
-            date = date.plusDays(1);
-            if (date.getDayOfWeek().getValue() == 7)
+    private static void printCalendar(LocalDate date, int month) {
+        printWeekdaysHeader();
+        int indent = calculateIndent(date.getDayOfWeek());
+        printIndent(indent);
+        LocalDate currentDate = date;
+        while (currentDate.getMonthValue() == month) {
+            System.out.printf("%4d", currentDate.getDayOfMonth());
+            if (currentDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
                 System.out.println();
+            }
+            currentDate = currentDate.plusDays(1);
         }
-        if (date.getDayOfWeek().getValue() != 7)
+        if (date.plusMonths(1).minusDays(1).getDayOfWeek() != DayOfWeek.SUNDAY) {
             System.out.println();
+        }
+    }
+
+    private static void printWeekdaysHeader() {
+        for (DayOfWeek day : DayOfWeek.values()) {
+            String shortName = day.getDisplayName(TextStyle.SHORT, Locale.ENGLISH);
+            System.out.printf("%4s", shortName);
+        }
+        System.out.println();
+    }
+
+    private static int calculateIndent(DayOfWeek firstDayOfMonth) {
+        return firstDayOfMonth.getValue() - 1;
+    }
+
+    private static void printIndent(int indent) {
+        for (int i = 0; i < indent; i++) {
+            System.out.print("    ");
+        }
     }
 }
