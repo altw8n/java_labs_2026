@@ -23,8 +23,11 @@ public class Point{
         this(0, y);
     }*/
 
-    public static Point pointWithY(double y) {
+    public static Point withY(double y) {
         return new Point(0, y);
+    }
+    public static Point withX(double x) {
+        return new Point(x, 0);
     }
 
     public double getX() {

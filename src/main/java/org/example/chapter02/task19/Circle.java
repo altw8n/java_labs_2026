@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Circle {
+    private static final double EPSILON = 1e-10;
     private final Point center;
     private final double radius;
 
@@ -35,15 +36,15 @@ public class Circle {
         Point p2 = c2.center;
         double d = p1.distanceTo(p2);
 
-        if (d > r1 + r2 || d < Math.abs(r1 - r2)) {
+        if (haveNoIntersections(d, r1, r2)) {
             return result;
         }
 
-        if (d == 0 && Math.abs(r1 - r2) < 1e-10) {
+        if (areCoincident(d, r1, r2)) {
             return result;
         }
 
-        if (Math.abs(d - (r1 + r2)) < 1e-10 || Math.abs(d - Math.abs(r1 - r2)) < 1e-10) {
+        if (areTouching(d, r1, r2)) {
             double t = r1 / d;
             double x = p1.getX() + (p2.getX() - p1.getX()) * t;
             double y = p1.getY() + (p2.getY() - p1.getY()) * t;
@@ -64,6 +65,18 @@ public class Circle {
         result.add(new Point(x0 - dx, y0 - dy));
 
         return result;
+    }
+
+    private static boolean haveNoIntersections(double d, double r1, double r2){
+        return d > r1 + r2 || d < Math.abs(r1 - r2);
+    }
+
+    private static boolean areCoincident(double d, double r1, double r2){
+        return d == 0 && Math.abs(r1 - r2) < EPSILON;
+    }
+
+    private static boolean areTouching(double d, double r1, double r2){
+        return Math.abs(d - (r1 + r2)) < EPSILON || Math.abs(d - Math.abs(r1 - r2)) < EPSILON;
     }
 
     @Override

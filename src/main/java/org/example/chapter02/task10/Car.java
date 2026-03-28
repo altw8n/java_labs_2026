@@ -41,12 +41,12 @@ public class Car {
         return fuel > 0;
     }
 
-    public double drive(double distance, double angleDegrees) {
+    public Car drive(double distance, double angleDegrees) {
         if (distance < 0) {
             throw new IllegalArgumentException("negative distance ");
         }
         if (distance == 0 || fuel <= 0) {
-            return 0;
+            return this;
         }
         double maxPossibleDistance = fuel * fuelEfficiency;
         double actualDistance = Math.min(maxPossibleDistance, distance);
@@ -57,10 +57,10 @@ public class Car {
         x += deltaX;
         y += deltaY;
         fuel -= fuelConsumed;
-        return actualDistance;
+        return this;
     }
 
-    public double driveToPoint(double targetX, double targetY) {
+    public Car driveToPoint(double targetX, double targetY) {
         double deltaX = targetX - x;
         double deltaY = targetY - y;
         double distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
@@ -68,14 +68,15 @@ public class Car {
         return drive(distance, angleDegrees);
     }
 
-    public void addFuel(double liters) {
+    public Car addFuel(double liters) {
         if (liters < 0) {
             throw new IllegalArgumentException("negative value for fuel");
         }
         if (liters == 0) {
-            return;
+            return this;
         }
         fuel += liters;
+        return this;
     }
 
     public double getMaxDistance() {
@@ -86,7 +87,7 @@ public class Car {
         return Math.sqrt(x * x + y * y);
     }
 
-    public void drawMap(int size) {
+    public Car drawMap(int size) {
         double minX = Math.min(0, x);
         double maxX = Math.max(0, x);
         double minY = Math.min(0, y);
@@ -143,6 +144,7 @@ public class Car {
             }
             System.out.println();
         }
+        return this;
     }
 
     @Override
