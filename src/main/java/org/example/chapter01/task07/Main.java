@@ -1,40 +1,47 @@
-/*Напишите программу, которая читает два целых числа
-между 0 и 4294967295, сохраняет их в переменных
-типа int и вычисляет и отображает их беззнаковую
-сумму, разность, произведение, частное и остаток.
-Не преобразуйте их в тип long.*/
 
 package org.example.chapter01.task07;
 
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
-        Scanner in = new Scanner(System.in);
-        System.out.println("enter first num (0;65535)");
-        int intFirst = in.nextInt();
+    private static final int UNSIGNED_MASK = 0xFFFF;
+    private static final int UNSIGNED_SHORT_MAX = 65535;
 
-        System.out.println("enter second num (0;65535)");
-        int intSecond = in.nextInt();
+    public static void main() {
+        Scanner scanner = new Scanner(System.in);
+        int in1 = scanner.nextInt();
+        int in2 = scanner.nextInt();
 
-        short shortFirst = (short) intFirst;
-        short shortSecond = (short) intSecond;
+        if (in1 < 0 || in1 > UNSIGNED_SHORT_MAX || in2 < 0 || in2 > UNSIGNED_SHORT_MAX) {
+            throw new IllegalArgumentException("числа вне диапазона 0..65535");
+        }
+        short a = (short) in1;
+        short b = (short) in2;
 
-        int sum = Short.toUnsignedInt(shortFirst) + Short.toUnsignedInt(shortSecond);
-        System.out.println("сумма: " + sum);
+        short sum = add(a, b);
+        short diff = sub(a, b);
 
-        int diff = Short.toUnsignedInt(shortFirst) - Short.toUnsignedInt(shortSecond);
-        System.out.println("разность: " + diff);
+        System.out.println("sum: " + toUnsigned(sum));
+        System.out.println("diff: " + toUnsigned(diff));
+    }
 
-        int prod = Short.toUnsignedInt(shortFirst) * Short.toUnsignedInt(shortSecond);
-        System.out.println("произведение: " + prod);
+    public static short add(short a, short b) {
+        short max = (short) 0xFFFF;
+        if ((b & UNSIGNED_MASK) > ((max - a) & UNSIGNED_MASK)) {
+            throw new ArithmeticException("переполнение при сложении");
+        }
+        return (short) (a + b);
+    }
 
-        int div = Short.toUnsignedInt(shortFirst) / Short.toUnsignedInt(shortSecond);
-        System.out.println("частное: " + div);
 
-        int mod = Short.toUnsignedInt(shortFirst) % Short.toUnsignedInt(shortSecond);
-        System.out.println("остаток: " + mod);
+    public static short sub(short a, short b) {
+        if ((a & UNSIGNED_MASK) < (b & UNSIGNED_MASK)) {
+            throw new ArithmeticException("отрицательный результат");
+        }
+        return (short) (a - b);
+    }
 
-        in.close();
+    public static int toUnsigned(short s) {
+        return s & UNSIGNED_MASK;
     }
 }

@@ -3,17 +3,18 @@
  Вычислите факториал числа 1000.*/
 
 package org.example.chapter01.task06;
+
 import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(){
+    public static void main() {
         Scanner in = new Scanner(System.in);
         System.out.println("enter number: ");
         int n = in.nextInt();
 
         BigInteger factorial = BigInteger.ONE;
-        for (int i = 2; i <= n; i++){
+        for (int i = 2; i <= n; i++) {
             factorial = factorial.multiply(BigInteger.valueOf(i));
         }
 

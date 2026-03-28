@@ -16,7 +16,7 @@ public class Main {
         isMagic(matrix);
     }
 
-    public static ArrayList<ArrayList<Integer>> readMatrix(){
+    public static ArrayList<ArrayList<Integer>> readMatrix() {
         Scanner in = new Scanner(System.in);
         ArrayList<ArrayList<Integer>> matrix = new ArrayList<>();
         while (true) {
@@ -36,57 +36,56 @@ public class Main {
         return matrix;
     }
 
-    public static void isMagic(ArrayList<ArrayList<Integer>> matrix){
+    public static void isMagic(ArrayList<ArrayList<Integer>> matrix) {
         int targetSum = 0;
-        for (int i = 0; i < matrix.getFirst().size(); ++i){
+        for (int i = 0; i < matrix.getFirst().size(); ++i) {
             targetSum += matrix.getFirst().get(i);
         }
 
         boolean isMagic = true;
-        for (int i = 0; i < matrix.size(); ++i){
+        for (int i = 0; i < matrix.size(); ++i) {
             int rowSum = 0;
-            for (int j = 0; j < matrix.size(); ++j){
+            for (int j = 0; j < matrix.size(); ++j) {
                 rowSum += matrix.get(i).get(j);
             }
-            if (rowSum != targetSum){
+            if (rowSum != targetSum) {
                 isMagic = false;
                 break;
             }
         }
 
-        for (int j = 0; j < matrix.size(); ++j){
+        for (int j = 0; j < matrix.size(); ++j) {
             int colSum = 0;
             for (ArrayList<Integer> integers : matrix) {
                 colSum += integers.get(j);
             }
-            if (targetSum != colSum){
+            if (targetSum != colSum) {
                 isMagic = false;
                 break;
             }
         }
 
         int diagSum1 = 0;
-        for (int i = 0; i < matrix.size(); ++i){
+        for (int i = 0; i < matrix.size(); ++i) {
             diagSum1 += matrix.get(i).get(i);
         }
 
-        if (targetSum != diagSum1){
+        if (targetSum != diagSum1) {
             isMagic = false;
         }
 
         int diagSum2 = 0;
-        for (int i = 0; i < matrix.size(); ++i){
+        for (int i = 0; i < matrix.size(); ++i) {
             diagSum2 += matrix.get(i).get(matrix.size() - 1 - i);
         }
 
-        if (targetSum != diagSum2){
+        if (targetSum != diagSum2) {
             isMagic = false;
         }
 
-        if (isMagic){
+        if (isMagic) {
             System.out.println("magic square");
-        }
-        else {
+        } else {
             System.out.println("not magic square");
         }
     }
