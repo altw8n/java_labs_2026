@@ -1,4 +1,7 @@
-package org.example.chapter03.task01;
+package org.example.chapter03.task02;
+
+
+import org.example.chapter03.task01.Measurable;
 
 public class Employee implements Measurable {
     private String name;
