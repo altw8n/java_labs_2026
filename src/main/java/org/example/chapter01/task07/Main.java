@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     private static final int UNSIGNED_MASK = 0xFFFF;
-    private static final int UNSIGNED_SHORT_MAX = 65535;
+    private static final int UNSIGNED_SHORT_MAX = Short.MAX_VALUE * 2 + 1;
 
     public static void main() {
         Scanner scanner = new Scanner(System.in);
