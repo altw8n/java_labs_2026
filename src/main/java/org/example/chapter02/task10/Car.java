@@ -87,11 +87,11 @@ public class Car {
         return Math.sqrt(x * x + y * y);
     }
 
-    public Car drawMap(int size) {
-        double minX = Math.min(0, x);
-        double maxX = Math.max(0, x);
-        double minY = Math.min(0, y);
-        double maxY = Math.max(0, y);
+    public static void drawMap(Car car, int size) {
+        double minX = Math.min(0, car.getX());
+        double maxX = Math.max(0, car.getX());
+        double minY = Math.min(0, car.getY());
+        double maxY = Math.max(0, car.getY());
 
         double rangeX = maxX - minX;
         double rangeY = maxY - minY;
@@ -124,8 +124,8 @@ public class Car {
             map[size - 1 - startY][startX] = 'S';
         }
 
-        int carX = (int) ((x - minX) / rangeX * (size - 1));
-        int carY = (int) ((y - minY) / rangeY * (size - 1));
+        int carX = (int) ((car.getX() - minX) / rangeX * (size - 1));
+        int carY = (int) ((car.getY() - minY) / rangeY * (size - 1));
         if (carX >= 0 && carX < size && carY >= 0 && carY < size) {
             if (map[size - 1 - carY][carX] == 'S') {
                 map[size - 1 - carY][carX] = 'B';
@@ -144,7 +144,6 @@ public class Car {
             }
             System.out.println();
         }
-        return this;
     }
 
     @Override
