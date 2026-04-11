@@ -1,3 +1,5 @@
+/*Реализуйте RandomSequence из раздела 3.9.1 как вложенный класс вне метода randomInts.*/
+
 package org.example.chapter03.task16;
 
 import java.util.random.RandomGenerator;
@@ -12,9 +14,7 @@ public class Sequences {
 
         public RandomSequence(int low, int high) {
             if (low > high) {
-                throw new IllegalArgumentException(
-                        "low (" + low + ") must be <= high (" + high + ")"
-                );
+                throw new IllegalArgumentException("low must be <= high");
             }
             this.low = low;
             this.high = high;

@@ -1,3 +1,8 @@
+/*Класс SquareSequence на самом деле не выдает бесконечную
+последовательность квадратов из-за целочисленного переполнения.
+Исправьте проблему, определив интерфейс Sequence<T> и класс SquareSequence,
+который реализует Sequence<BigInteger>.*/
+
 package org.example.chapter03.task06;
 
 import java.math.BigInteger;
