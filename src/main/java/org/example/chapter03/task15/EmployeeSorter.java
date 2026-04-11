@@ -12,13 +12,17 @@ public class EmployeeSorter {
         if (employees == null || employees.length == 0) {
             return;
         }
-        Arrays.sort(employees, Comparator.comparingDouble(Employee::getSalary).thenComparing(Employee::getName));        // затем по имени
+        Arrays.sort(employees, Comparator
+                .comparingDouble(Employee::getSalary)
+                .thenComparing(Employee::getName));        // затем по имени
     }
 
     public static void sortBySalaryReversed(Employee[] employees) {
         if (employees == null || employees.length == 0) {
             return;
         }
-        Arrays.sort(employees, Comparator.comparingDouble(Employee::getSalary).reversed().thenComparing(Employee::getName));
+        Arrays.sort(employees, Comparator.comparingDouble(Employee::getSalary)
+                .reversed()
+                .thenComparing(Employee::getName));
     }
 }
