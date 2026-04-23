@@ -14,8 +14,10 @@ public class FileFinder {
         }
 
         String ext = extension.startsWith(".") ? extension.substring(1) : extension;
+        Integer a = 0;
+        //a = 1;
 
         return directory.list((dir, name) ->
-                name.toLowerCase().endsWith("." + ext.toLowerCase()));
+                name.toLowerCase().endsWith("." + ext.toLowerCase() + a));
     }
 }
